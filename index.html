@@ -53,38 +53,38 @@
 
   <!-- Include Supabase JS Library -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script>
-    // Initialize Supabase
-    const supabaseUrl = 'https://mxddegqlmgoenspiqbro.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im14ZGRlZ3FsbWdvZW5zcGlxYnJvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIxNzMzODEsImV4cCI6MjA1Nzc0OTM4MX0.V4wbKfZBl3KHnL1zyqNKTkHSeE4T1wRU1w8CNCUZPUM';
-    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+ <script>
+  // Initialize Supabase
+  const supabaseUrl = 'https://mxddegqlmgoenspiqbro.supabase.co';
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im14ZGRlZ3FsbWdvZW5zcGlxYnJvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIxNzMzODEsImV4cCI6MjA1Nzc0OTM4MX0.V4wbKfZBl3KHnL1zyqNKTkHSeE4T1wRU1w8CNCUZPUM';
+  const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-    // Fetch and display products
-    async function fetchProducts() {
-      const { data: products, error } = await supabase
-        .from('products')
-        .select('*');
+  // Fetch and display products
+  async function fetchProducts() {
+    const { data: products, error } = await supabase
+      .from('products')
+      .select('*');
 
-      if (error) {
-        console.error('Error fetching products:', error);
-        return;
-      }
-
-      const productsContainer = document.getElementById('products');
-      products.forEach(product => {
-        const productHTML = `
-          <div class="product">
-            <h2>${product.name}</h2>
-            <img src="${product.image}" alt="${product.name}">
-            <p>${product.description}</p>
-            <p>Price: $${product.price}</p>
-          </div>
-        `;
-        productsContainer.innerHTML += productHTML;
-      });
+    if (error) {
+      console.error('Error fetching products:', error);
+      return;
     }
 
-    fetchProducts();
-  </script>
+    const productsContainer = document.getElementById('products');
+    products.forEach(product => {
+      const productHTML = `
+        <div class="product">
+          <h2>${product.name}</h2>
+          <img src="${product.image}" alt="${product.name}">
+          <p>${product.description}</p>
+          <p>Price: $${product.price}</p>
+        </div>
+      `;
+      productsContainer.innerHTML += productHTML;
+    });
+  }
+
+  fetchProducts();
+</script>
 </body>
 </html>
